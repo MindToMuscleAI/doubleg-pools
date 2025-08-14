@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Documentation:
+      This file contains a single-page website template for Double G Pools.  It is commented
+      throughout with TODOs to help you customise the logo, gallery images, Google Form embed
+      and reCAPTCHA integration.
+    -->
+    <title>Double G Pools | Custom Pools &amp; Covers</title>
+    <meta
+      name="description"
+      content="Double G Pools designs, builds and maintains premium swimming pools and pool covers. Serving Huntington Park and surrounding areas."
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com" />
+    <meta property="og:title" content="Double G Pools | Custom Pools &amp; Covers" />
+    <meta property="og:description" content="Double G Pools designs, builds and maintains premium swimming pools and pool covers." />
+    <meta property="og:image" content="assets/hero.jpg" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Double G Pools | Custom Pools &amp; Covers" />
+    <meta property="twitter:description" content="Double G Pools designs, builds and maintains premium swimming pools and pool covers." />
+    <meta property="twitter:image" content="assets/hero.jpg" />
+    <!-- JSON‑LD LocalBusiness schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Double G Pools",
+        "description": "Custom pool construction, pool cover installation, repair and maintenance.",
+        "image": "assets/hero.jpg",
+        "url": "https://example.com",
+        "telephone": "+1‑555‑123‑4567",
+        "email": "info@example.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "[YOUR AREA HERE]",
+          "addressLocality": "[YOUR AREA HERE]",
+          "addressRegion": "",
+          "postalCode": "",
+          "addressCountry": "US"
+        },
+        "openingHours": [
+          "Mo‑Fr 08:00‑18:00",
+          "Sa 09:00‑15:00"
+        ],
+        "areaServed": "Los Angeles County"
+      }
+    </script>
+    <!-- Google Fonts: use Poppins for headings and body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #0077b6;
+        --secondary-color: #00b4d8;
+        --accent-color: #48cae4;
+        --light-color: #f7fefe;
+        --dark-color: #023e8a;
+        --text-color: #003049;
+        --header-height: 70px;
+      }
+
+      /* Basic resets */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--light-color);
+        scroll-behavior: smooth;
+      }
+      /* Respect users who prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Header & Navigation */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--header-height);
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+      .logo img {
+        height: 40px;
+        width: 40px;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.2rem;
+        margin: 0;
+        padding: 0;
+      }
+      nav a {
+        font-weight: 500;
+        color: var(--text-color);
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+      nav a:hover,
+      nav a:focus {
+        background-color: var(--accent-color);
+        color: #fff;
+        outline: none;
+      }
+
+      /* Active link styling for current section */
+      nav a.active {
+        color: var(--secondary-color);
+        border-bottom: 2px solid var(--secondary-color);
+      }
+      /* Mobile menu toggle (burger) */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+      .menu-toggle span {
+        width: 100%;
+        height: 3px;
+        background: var(--text-color);
+        margin-bottom: 5px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      /* When menu is open */
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      /* Responsive nav */
+      @media (max-width: 768px) {
+        nav ul {
+          position: fixed;
+          top: var(--header-height);
+          right: 0;
+          background-color: rgba(255, 255, 255, 0.95);
+          flex-direction: column;
+          align-items: flex-start;
+          width: 200px;
+          max-height: 0;
+          overflow: hidden;
+          box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+          transition: max-height 0.3s ease;
+        }
+        nav ul.open {
+          max-height: 300px;
+        }
+        .menu-toggle {
+          display: flex;
+        }
+      }
+
+      /* Hero section */
+      .hero {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.55)
+          ),
+          url('assets/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        padding: 0 1rem;
+        position: relative;
+      }
+      .hero h1 {
+        font-size: clamp(2.2rem, 5vw + 1rem, 4rem);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+      .hero p {
+        font-size: clamp(1rem, 2vw + 0.5rem, 1.4rem);
+        margin-bottom: 2rem;
+        max-width: 600px;
+      }
+      .hero .cta-button {
+        background-color: var(--secondary-color);
+        color: #fff;
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        text-transform: uppercase;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .hero .cta-button:hover,
+      .hero .cta-button:focus {
+        background-color: var(--accent-color);
+        transform: translateY(-2px);
+        outline: none;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      }
+      .hero .cta-button:active {
+        transform: translateY(0);
+      }
+
+      /* Section shared styles */
+      section {
+        padding: 4rem 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      section h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--dark-color);
+      }
+      /* About section */
+      .about p {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+
+      /* Services section */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+      .service-card {
+        background-color: #fff;
+        padding: 2rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+      .service-card:hover,
+      .service-card:focus-within {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      }
+      .service-card h3 {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        color: var(--primary-color);
+      }
+      .service-card p {
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+        color: var(--text-color);
+      }
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+      }
+
+      /* Gallery section */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      .gallery-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .gallery-grid img:hover,
+      .gallery-grid img:focus {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        outline: none;
+      }
+
+      /* Contact section */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        align-items: flex-start;
+      }
+      .contact-form {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      }
+      .contact-form label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+      .contact-form textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .contact-form button {
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .contact-form button:hover,
+      .contact-form button:focus {
+        background-color: var(--secondary-color);
+        outline: none;
+      }
+      .contact-details {
+        line-height: 1.6;
+      }
+      .contact-details h3 {
+        margin-top: 0;
+      }
+      .contact-details a {
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: #fff;
+        padding: 2rem 1rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+      .footer-grid h4 {
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+      .footer-grid p {
+        margin: 0.2rem 0;
+      }
+      .social-links {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .social-links a svg {
+        width: 24px;
+        height: 24px;
+        fill: #fff;
+        transition: fill 0.3s ease;
+      }
+      .social-links a:hover svg,
+      .social-links a:focus svg {
+        fill: var(--accent-color);
+      }
+      .copyright {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 1rem;
+      }
+
+      /* Animation classes using IntersectionObserver */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header>
+      <div class="logo">
+        <!-- TODO: Replace logo.png with your own logo file in the assets folder or remove the image tag and rely on the text logo -->
+        <img id="logo" src="assets/logo-placeholder.png" alt="Company logo" onerror="this.style.display='none';" />
+        <span class="logo-text">Double G Pools</span>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <h1>Dream Pools, Built to Last</h1>
+      <p>
+        Transform your backyard into a private oasis with our custom pool construction, pool covers and
+        maintenance services. Experience craftsmanship that stands the test of time.
+      </p>
+      <a href="#contact" class="cta-button">Contact Us</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <h2>About Us</h2>
+      <p>
+        <!-- TODO: Edit this paragraph to reflect your business story and values. -->
+        With years of experience designing, constructing and servicing swimming pools, Double G Pools
+        is committed to quality craftsmanship and customer satisfaction. Our team of licensed
+        professionals delivers reliable solutions tailored to your lifestyle and budget.
+      </p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <article class="service-card reveal" tabindex="0">
+          <div class="service-icon" aria-hidden="true">🏗️</div>
+          <h3>Pool Construction</h3>
+          <p>
+            <!-- TODO: Edit service descriptions as needed. -->
+            Custom design and construction of in‑ground pools, tailored to your space and aesthetic.
+          </p>
+        </article>
+        <article class="service-card reveal" tabindex="0">
+          <div class="service-icon" aria-hidden="true">🛡️</div>
+          <h3>Pool Cover Installation</h3>
+          <p>
+            Durable manual and automatic covers to keep your pool secure, clean and energy efficient.
+          </p>
+        </article>
+        <article class="service-card reveal" tabindex="0">
+          <div class="service-icon" aria-hidden="true">🔧</div>
+          <h3>Repair &amp; Maintenance</h3>
+          <p>
+            Comprehensive maintenance plans and expert repair services to keep your pool in pristine
+            condition year‑round.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+      <h2>Our Work</h2>
+      <div class="gallery-grid">
+        <!-- TODO: Replace src values with your own project photos. Ensure alt text describes each image. -->
+        <img src="assets/gallery1.jpg" alt="Pool illuminated at dusk with palm tree" class="reveal" />
+        <img src="assets/gallery2.jpg" alt="Infinity pool overlooking the ocean" class="reveal" />
+        <img src="assets/gallery3.jpg" alt="Backyard pool with water features and garden" class="reveal" />
+        <img src="assets/gallery4.jpg" alt="Swimming pool with blue safety cover" class="reveal" />
+        <img src="assets/gallery5.jpg" alt="Close‑up of shimmering pool tiles" class="reveal" />
+        <img src="assets/gallery6.jpg" alt="Top view of a swimmer in clear blue pool" class="reveal" />
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <!-- Heading for the contact form -->
+          <h3>Contact Us</h3>
+          <!-- Embedded Google Form -->
+          <div style="max-width:900px;margin:0 auto;">
+            <iframe src="PASTE_FORM_EMBED_URL_HERE" width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0">
+              Loading…
+            </iframe>
+          </div>
+          <form action="mailto:info@example.com" method="post" enctype="text/plain" novalidate>
+            <!-- This fallback form will be used if the Google Form iframe above is not replaced.  -->
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123‑4567" />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project…"></textarea>
+            <!-- reCAPTCHA placeholder -->
+            <!-- TODO: Insert your reCAPTCHA site key here -->
+            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-details">
+          <h3>Get in Touch</h3>
+          <p>We proudly serve [YOUR AREA HERE] and the surrounding areas.</p>
+          <p>
+            <strong>Phone:</strong>
+            <a href="tel:+15551234567">(555) 123‑4567</a>
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:info@example.com">info@example.com</a>
+          </p>
+          <p>
+            <strong>Hours:</strong><br />
+            Mon–Fri: 8 am – 6 pm<br />
+            Sat: 9 am – 3 pm<br />
+            Sun: Closed
+          </p>
+          <p>
+            <strong>Address:</strong><br />
+            [YOUR AREA HERE]
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <h4>Double G Pools</h4>
+          <p>[YOUR AREA HERE]</p>
+          <p>(555) 123‑4567</p>
+          <p>info@example.com</p>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon–Fri: 8 am – 6 pm</p>
+          <p>Sat: 9 am – 3 pm</p>
+          <p>Sun: Closed</p>
+        </div>
+        <div>
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <!-- TODO: Replace # with your social media profile links -->
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M22 12c0-5.5228-4.4772-10-10-10S2 6.4772 2 12c0 4.9915 3.657 9.1285 8.438 9.8787v-6.987h-2.54v-2.89h2.54V9.845c0-2.507 1.4925-3.89 3.7775-3.89 1.094 0 2.238.195 2.238.195v2.463h-1.2615c-1.2445 0-1.6325.7725-1.6325 1.5625v1.875h2.773l-.4435 2.89h-2.3295v6.987A10.0039 10.0039 0 0022 12z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 2C4.79086 2 3 3.79086 3 6v12c0 2.2091 1.79086 4 4 4h10c2.2091 0 4-1.7909 4-4V6c0-2.20914-1.7909-4-4-4H7zm10 2c1.1046 0 2 .89543 2 2v10c0 1.1046-.8954 2-2 2H7c-1.10457 0-2-.8954-2-2V6c0-1.10457.89543-2 2-2h10zm-5 3.5c-2.4853 0-4.5 2.0147-4.5 4.5s2.0147 4.5 4.5 4.5 4.5-2.0147 4.5-4.5-2.0147-4.5-4.5-4.5zm0 7.5c-1.6569 0-3-1.3431-3-3s1.3431-3 3-3 3 1.3431 3 3-1.3431 3-3 3zm5.5-7.9a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M21.543 6.902a8.6833 8.6833 0 01-2.357.646A4.1183 4.1183 0 0021.012 5.1a8.1993 8.1993 0 01-2.605.977 4.1078 4.1078 0 00-7.086 2.805c0 .3228.0367.6377.1068.9384a11.6713 11.6713 0 01-8.457-4.288 4.1064 4.1064 0 001.2724 5.4778 4.0682 4.0682 0 01-1.8607-.513v.0516a4.1078 4.1078 0 003.2925 4.0264 4.0967 4.0967 0 01-1.8533.0705 4.1083 4.1083 0 003.834 2.8505A8.2335 8.2335 0 012 18.4134a11.6161 11.6161 0 006.29 1.84c7.547 0 11.6756-6.137 11.6756-11.4552 0-.175-.004-0.35-.0117-0.5244a8.3488 8.3488 0 002.0891-2.1348l-.0058-.0029z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © <span id="current-year"></span> Double G Pools. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      // Update copyright year automatically
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Mobile menu toggle logic
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      menuToggle.addEventListener('click', function () {
+        const isOpen = navMenu.classList.toggle('open');
+        menuToggle.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      // IntersectionObserver to reveal elements on scroll
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReducedMotion) {
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        revealEls.forEach((el) => revealObserver.observe(el));
+      }
+
+      // Highlight active navigation link based on scroll position
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach((link) => {
+                const targetId = link.getAttribute('href').replace('#', '');
+                if (targetId === id) {
+                  link.classList.add('active');
+                } else {
+                  link.classList.remove('active');
+                }
+              });
+            }
+          });
+        },
+        {
+          threshold: 0.6,
+        }
+      );
+      sections.forEach((section) => {
+        navObserver.observe(section);
+      });
+    </script>
+    <!-- TODO: If using reCAPTCHA, insert the following script before closing body tag and replace data-sitekey above: -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+    <!--
+      Customisation Instructions:
+      • To embed your own Google Form, replace the <!-- PASTE_GOOGLE_FORM_IFRAME_HERE --> comment in the
+        Contact section with the iframe snippet provided by Google Forms.
+      • To enable reCAPTCHA on the fallback contact form, insert your site key into the data-sitekey
+        attribute of the <div class="g-recaptcha"></div> element and uncomment the API script tag above.
+      • Replace the logo placeholder in the header (assets/logo-placeholder.png) with your own logo file or
+        remove the <img> tag and rely on the text logo provided.
+      • Swap out gallery images by replacing the files in the /assets directory and updating the src
+        attributes in the Gallery section.  Keep descriptive alt text for accessibility.
+      • To deploy this site using GitHub Pages, commit these files to your repository and enable Pages via
+        Settings → Pages → Source, selecting the main branch and root directory.
+    -->
+  </body>
+</html>
