@@ -531,35 +531,34 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <h2>Contact Us</h2>
-      <div class="contact-grid">
-        <div class="contact-form">
-          <!-- Heading for the contact form -->
-          <h3>Contact Us</h3>
-          <!-- Embedded Google Form -->
-          <div style="max-width:900px;margin:0 auto;">
-            <iframe src="PASTE_FORM_EMBED_URL_HERE" width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0">
-              Loading…
-            </iframe>
-          </div>
-          <form action="mailto:info@example.com" method="post" enctype="text/plain" novalidate>
-            <!-- This fallback form will be used if the Google Form iframe above is not replaced.  -->
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" required />
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required />
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="(555) 123‑4567" />
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us about your project…"></textarea>
-            <!-- reCAPTCHA placeholder -->
-            <!-- TODO: Insert your reCAPTCHA site key here -->
-            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
+<!-- Contact Section -->
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-grid">
+    <div class="contact-form">
+
+      <!-- Embedded Google Form -->
+      <div style="max-width:900px;margin:0 auto;">
+        <iframe
+          src="PASTE_YOUR_GOOGLE_FORM_EMBED_URL_HERE"
+          width="100%"
+          height="1400"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          loading="lazy">Loading…</iframe>
+      </div>
+
+    </div>
+
+    <div class="contact-details">
+   <!-- your phone, email, hours, area text lives here -->
+      </div>
+    </div> <!-- .contact-grid -->
+  </section>
+    
+       
+
         <div class="contact-details">
           <h3>Get in Touch</h3>
           <p>We proudly serve [YOUR AREA HERE] and the surrounding areas.</p>
